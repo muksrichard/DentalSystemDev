@@ -1,0 +1,20 @@
+<?php
+include('includes/constants.php');
+class Database
+{
+
+    private $host  = Constants::DEV_URL;
+    private $user  = Constants::DB_USERNAME;
+    private $password  = Constants::DB_PASWORD;
+    private $database  = Constants::DB_NAME;
+
+    public function getConnection()
+    {
+        $conn = new mysqli($this->host, $this->user, $this->password, $this->database);
+        if ($conn->connect_error) {
+            die("Error failed to connect to MySQL: " . $conn->connect_error);
+        } else {
+            return $conn;
+        }
+    }
+}
